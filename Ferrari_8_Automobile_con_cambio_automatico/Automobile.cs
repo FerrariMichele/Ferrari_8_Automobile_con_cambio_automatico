@@ -54,7 +54,7 @@ namespace Ferrari_8_Automobile_con_cambio_automatico
                 Accesa = !Accesa;
             }
         }
-        public void Accelera()
+        public virtual void Accelera()
         {
             if (Accesa && Marce > 0 && Velocita < rapporti[1, Marce])
             {
@@ -67,7 +67,7 @@ namespace Ferrari_8_Automobile_con_cambio_automatico
                 Velocita = CalcolaVelocita();
             }
         }
-        public void Frena()
+        public virtual void Frena()
         {
             if (Accesa && Marce > 1 && Velocita > rapporti[1, Marce - 1])
             {
@@ -145,6 +145,59 @@ namespace Ferrari_8_Automobile_con_cambio_automatico
                 rapportoTrans = rapporti[0, Marce];
             }
             return (int)(Velocita / 3.6 * rapportoTrans * 60);
+        }
+    }
+
+    class Automatica : Automobile
+    {
+        public Automatica() : base()
+        {
+            _accesa = false;
+            _velocita = 0;
+            _giriMinuto = 0;
+            _marce = 0;
+        }
+        public override void Accelera()
+        {
+            if (Accesa && Marce > 0 && Velocita < rapporti[1, Marce])
+            {
+                GiriMinuto += 500;
+                Velocita = CalcolaVelocita();
+            }
+            if (Marce > 0)
+            {
+                if (Velocita < rapporti[1, Marce] && Marce < 6)
+                    AumentaMarcia();
+            }
+            if (Accesa && Marce == -1 && Velocita < rapporti[1, 0])
+            {
+                GiriMinuto += 500;
+                Velocita = CalcolaVelocita();
+            }
+        }
+        public override void Frena()
+        {
+            if (Accesa && Marce > 1 && Velocita > rapporti[1, Marce - 1])
+            {
+                GiriMinuto -= 500;
+                Velocita = CalcolaVelocita();
+            }
+            if (Marce > 0 && Velocita < rapporti[1, Marce - 1])
+                DiminuisciMarcia();
+            if (Accesa && Marce == -1)
+            {
+                GiriMinuto -= 500;
+                if (GiriMinuto < 0)
+                    GiriMinuto = 0;
+                Velocita = CalcolaVelocita();
+            }
+            if (Accesa && Marce == 1 && Velocita > 0)
+            {
+                GiriMinuto -= 500;
+                if (GiriMinuto < 0)
+                    GiriMinuto = 0;
+                Velocita = CalcolaVelocita();
+            }
         }
     }
 }

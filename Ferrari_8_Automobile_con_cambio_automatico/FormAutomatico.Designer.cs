@@ -35,6 +35,8 @@
             this.buttonFreno = new System.Windows.Forms.Button();
             this.labelGiri = new System.Windows.Forms.Label();
             this.labelVelocita = new System.Windows.Forms.Label();
+            this.buttonIndietro = new System.Windows.Forms.Button();
+            this.buttonAvanti = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonAccensione
@@ -45,6 +47,7 @@
             this.buttonAccensione.TabIndex = 17;
             this.buttonAccensione.Text = "Engine On";
             this.buttonAccensione.UseVisualStyleBackColor = true;
+            this.buttonAccensione.Click += new System.EventHandler(this.buttonAccensione_Click);
             // 
             // labelOnOff
             // 
@@ -72,6 +75,7 @@
             this.buttonAcceleratore.TabIndex = 12;
             this.buttonAcceleratore.Text = "Acceleratore";
             this.buttonAcceleratore.UseVisualStyleBackColor = true;
+            this.buttonAcceleratore.Click += new System.EventHandler(this.buttonAcceleratore_Click);
             // 
             // buttonFreno
             // 
@@ -81,6 +85,7 @@
             this.buttonFreno.TabIndex = 11;
             this.buttonFreno.Text = "Freno";
             this.buttonFreno.UseVisualStyleBackColor = true;
+            this.buttonFreno.Click += new System.EventHandler(this.buttonFreno_Click);
             // 
             // labelGiri
             // 
@@ -100,11 +105,33 @@
             this.labelVelocita.TabIndex = 9;
             this.labelVelocita.Text = "0";
             // 
+            // buttonIndietro
+            // 
+            this.buttonIndietro.Location = new System.Drawing.Point(346, 37);
+            this.buttonIndietro.Name = "buttonIndietro";
+            this.buttonIndietro.Size = new System.Drawing.Size(75, 23);
+            this.buttonIndietro.TabIndex = 19;
+            this.buttonIndietro.Text = "Indietro";
+            this.buttonIndietro.UseVisualStyleBackColor = true;
+            this.buttonIndietro.Click += new System.EventHandler(this.buttonIndietro_Click);
+            // 
+            // buttonAvanti
+            // 
+            this.buttonAvanti.Location = new System.Drawing.Point(265, 37);
+            this.buttonAvanti.Name = "buttonAvanti";
+            this.buttonAvanti.Size = new System.Drawing.Size(75, 23);
+            this.buttonAvanti.TabIndex = 18;
+            this.buttonAvanti.Text = "Avanti";
+            this.buttonAvanti.UseVisualStyleBackColor = true;
+            this.buttonAvanti.Click += new System.EventHandler(this.buttonAvanti_Click);
+            // 
             // FormAutomatico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonIndietro);
+            this.Controls.Add(this.buttonAvanti);
             this.Controls.Add(this.buttonAccensione);
             this.Controls.Add(this.labelOnOff);
             this.Controls.Add(this.labelMarcia);
@@ -128,5 +155,7 @@
         private System.Windows.Forms.Button buttonFreno;
         private System.Windows.Forms.Label labelGiri;
         private System.Windows.Forms.Label labelVelocita;
+        private System.Windows.Forms.Button buttonIndietro;
+        private System.Windows.Forms.Button buttonAvanti;
     }
 }
