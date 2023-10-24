@@ -50,7 +50,10 @@ namespace Ferrari_8_Automobile_con_cambio_automatico
             labelGiri.Text = (Auto.GiriMinuto).ToString();
             if (Auto.Accesa) labelOnOff.Text = "On";
             else labelOnOff.Text = "Off";
-            labelMarcia.Text = (Auto.Marce).ToString();
+            if (Auto.Marce == -1)
+                labelMarcia.Text = "R";
+            else
+                labelMarcia.Text = (Auto.Marce).ToString();
         }
     }
 }
