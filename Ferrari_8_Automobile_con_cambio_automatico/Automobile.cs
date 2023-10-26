@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,10 +22,18 @@ namespace Ferrari_8_Automobile_con_cambio_automatico
 
         public Automobile() 
         { 
-            _accesa = false;
-            _velocita = 0;
-            _giriMinuto = 0;
-            _marce = 0;
+            Accesa = false;
+            Velocita = 0;
+            GiriMinuto = 0;
+            Marce = 0;
+        }
+
+        public Automobile(Automobile auto)
+        {
+            Accesa = auto.Accesa;
+            Velocita = auto.Velocita;
+            GiriMinuto = auto.GiriMinuto;
+            Marce = auto.Marce;
         }
 
         public bool Accesa
@@ -152,11 +161,17 @@ namespace Ferrari_8_Automobile_con_cambio_automatico
     {
         public Automatica() : base()
         {
-            _accesa = false;
-            _velocita = 0;
-            _giriMinuto = 0;
-            _marce = 0;
+           
         }
+
+        public Automatica(Automatica auto) : base() 
+        {
+            Accesa = auto.Accesa;
+            Velocita = auto.Velocita;
+            GiriMinuto = auto.GiriMinuto;
+            Marce = auto.Marce;
+        }
+
         public override void Accelera()
         {
             if (Accesa && Marce > 0 && Velocita < rapporti[1, Marce])
